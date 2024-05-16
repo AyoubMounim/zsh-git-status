@@ -11,6 +11,7 @@ ZSH_GIT_STATUS_MODIFIED_ICON="%{$fg[yellow]%}✚%f"
 ZSH_GIT_STATUS_STAGED_ICON="%{$fg[green]%}✚%f"
 ZSH_GIT_STATUS_UNTRACKED_ICON="%{$fg[red]%}✚%f"
 ZSH_GIT_STATUS_CONFLICT_ICON="%{$fg[red]%}✖%f"
+ZSH_GIT_STATUS_AHEAD_ICON="%{$fg[yellow]%}↑%f"
 
 # =========================================================== Private functions
 
@@ -73,6 +74,17 @@ function get_number_untracked(){
     return 0
 }
 
+function get_ahead(){
+    local branch_name="$1"
+    local git_output=$(git branch -vv | grep "* $branch_name")  # intermediate step
+    git_output=$(grep -Eo "ahead [0-9]+" <<< "$git_output")
+    local trash=""
+    local ahead=0
+    [ -z "$git_output" ] || read trash ahead <<< $git_output
+    echo "$ahead"
+    return 0
+}
+
 # ============================================================ Public functions
 
 function get_git_status(){
@@ -87,6 +99,7 @@ function get_git_status(){
     local conflicts_number=0
     read staged_number conflicts_number <<< $(get_number_staged)
     local untracked_number=$(get_number_untracked)
+    local ahead=$(get_ahead $branch_name)
     [ $untracked_number != 0 ] \
     && status_+="$ZSH_GIT_STATUS_SEPARATOR$ZSH_GIT_STATUS_UNTRACKED_ICON$untracked_number"
     [ $mod_number != 0 ] \
@@ -97,6 +110,8 @@ function get_git_status(){
     && status_+="$ZSH_GIT_STATUS_SEPARATOR$ZSH_GIT_STATUS_CLEAN_ICON"
     [ $conflicts_number != 0 ] \
     && status_+="$ZSH_GIT_STATUS_SEPARATOR$ZSH_GIT_STATUS_CONFLICT_ICON$conflicts_number"
+    [ $ahead != 0 ] \
+    && status_+="$ZSH_GIT_STATUS_SEPARATOR$ZSH_GIT_STATUS_AHEAD_ICON$ahead"
     status_+="$ZSH_GIT_STATUS_SUFFIX"
     echo "$status_"
     return 0
