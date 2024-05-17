@@ -15,6 +15,8 @@ ZSH_GIT_STATUS_AHEAD_ICON="%{$fg[yellow]%}↑%f"
 
 # =========================================================== Private functions
 
+# ============================================================ Public functions
+
 function get_array_data(){
     local git_output=$("$1")
     local array_data=$(echo $git_output | tr "\n" " ")  # intermediate step
@@ -84,8 +86,6 @@ function get_ahead(){
     echo "$ahead"
     return 0
 }
-
-# ============================================================ Public functions
 
 function get_git_status(){
     local branch_name=$(get_git_branch)
