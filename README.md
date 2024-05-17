@@ -15,11 +15,11 @@ the terminal prompt.
 
 The API function `get_git_status` returns a formatted
 string which can be readily embedded inside a console prompt. For example:
-`PROMPT='$(zsh-git-status)'`
+`PROMPT='$(get_git_status)'`
 
 One could either custumise the output of `get_git_status` by editing the global
-variables defined in the `zsh-git-status-globals.zsh`, or use the API functios
-to build ther own prompt string.
+variables defined in the `zsh-git-status-globals.zsh`, or use the API functions
+to build their own prompt string.
 
 The default formatted string shows the git info in the following format:
 "[git branch|number of untracked|number of modified|number of conflicts|number of ahead commits]"
