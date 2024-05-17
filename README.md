@@ -1,5 +1,5 @@
 
-#Git Status Plugin
+# Git Status Plugin
 
 A zsh plugin that exposes functions for retrieving informations about the
 status of the current git repository.
