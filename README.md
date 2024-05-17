@@ -8,7 +8,7 @@ After the `zsh-git-status.zsg` file is sourced a number of utilities functions
 for getting informations about the git directories are avaible to the client
 code.
 
-## Promt Application
+## Prompt Application
 
 A use case for this plugin is the displaying of the repository git status in
 the terminal prompt.
