@@ -15,7 +15,7 @@ the terminal prompt.
 
 The API function `get_git_status` returns a formatted
 string which can be readyly embedded inside a console prompt. for example:
-`PROMPT=$(zsh-git-status)`
+`PROMPT='$(zsh-git-status)'`
 
 One could either custumise the output of `get_git_status` by editing the global
 variables defined in the `zsh-git-status-globals.zsh`, or use the API functios
