@@ -11,7 +11,7 @@ After the `zsh-git-status.zsg` file is sourced a number of utilities functions
 for getting informations about the git directories are avaible to the client
 code.
 
-## Promt Application
+## Prompt Application
 
 The API function `get_git_status` returns a formatted
 string which can be readyly embedded inside a console prompt.
