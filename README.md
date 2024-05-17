@@ -14,7 +14,7 @@ A use case for this plugin is the displaying of the repository git status in
 the terminal prompt.
 
 The API function `get_git_status` returns a formatted
-string which can be readyly embedded inside a console prompt. for example:
+string which can be readily embedded inside a console prompt. for example:
 `PROMPT='$(zsh-git-status)'`
 
 One could either custumise the output of `get_git_status` by editing the global
